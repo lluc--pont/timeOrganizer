@@ -1,0 +1,67 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.virianth'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.hibernate:hibernate-core:5.4.17.Final'
+	//implementation 'javax.persistence:persistence-api:1.0.2' //JAVA SE
+	//compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2' //JAVA SE
+	implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2' //JAVA SE
+	implementation 'org.hibernate:hibernate-entitymanager:5.4.17.Final' //JAVA SE
+	//implementation group: 'org.hibernate', name: 'hibernate-java8', version: '5.4.17.Final' //JAVA 8
+	implementation 'org.hibernate:hibernate-java8:5.4.17.Final' //JAVA 8
+	implementation 'com.h2database:h2:1.4.200' //No permanent storage
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+
+task lluc0 {
+	group 'hideTest'
+	description 'Task to test the "dependsOn"'
+
+	doLast {
+		println '---pre--'
+	}
+}
+task lluc2 {
+	doLast {
+		println '---post--'
+	}
+}
+task lluc(dependsOn: tasks.lluc0) {
+	finalizedBy tasks.lluc2
+	doLast {
+		println 'Hello world!'
+	}
+}
+
+
+task testLluc {
+	//rootProject.name = 'com.virianth.gradle_first'
+	def homePath = System.properties['user.home']
+}
+task gitPull(type: Exec) {
+    description 'Pulls git.'
+    commandLine "git", "pull"
+}
+
+
+
+
