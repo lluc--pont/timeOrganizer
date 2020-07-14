@@ -26,10 +26,17 @@ public class TestEmpleados {
         //System.out.println("En esta nueva base de datos hay " + empleados.size() + " empleados.");
 
         //manager.merge() //recargar datos de una entity detached (sin hacer el find)
+
+        executeAll();
+
+    }
+
+    public static boolean executeAll() {
         insertInicial();
 
         imprimirTodo();
 
+        return true;
     }
 
     private static void insertInicial() {

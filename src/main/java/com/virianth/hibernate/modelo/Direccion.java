@@ -13,7 +13,8 @@ public class Direccion {
     @Column(name = "DIRECCION")
     private String direccion;
 
-    @Column(name = "LOCALIDAD")
+    @Column(name = "LOC" +
+            "ALIDAD")
     private String localidad;
 
     @Column(name = "PROVINCIA")
